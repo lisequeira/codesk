@@ -9,4 +9,6 @@ Rails.application.routes.draw do
       resources :listing
   end
 
+  mount Attachinary::Engine => "/attachinary"
+
 end
