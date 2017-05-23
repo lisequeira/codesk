@@ -1,12 +1,11 @@
 
-<div class="container">
+<div class="container margin_top">
+  <h2>Add new listing</h2>
     <div class='col-md-5'>
-    <%= simple_form_for @space do |f| %>
 
         <div class="form-group">
             <div class='input-group date' id='datetimepicker6'>
-              <%= f.input :name, class: "form-control", required: true %>
-              <input type='text' class="form-control" />
+              <input type='text' class="form-control" name="start_date"/>
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
               </span>
@@ -16,14 +15,14 @@
     <div class='col-md-5'>
         <div class="form-group">
             <div class='input-group date' id='datetimepicker7'>
-                <input type='text' class="form-control" />
+                <input type='text' class="form-control" name="end_date"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
         </div>
     </div>
-    <%end%>
+    <input type="submit" value="Submit" class="btn btn-primary" action=" /spaces/" + @space.id +"/listing" method="post">
 </div>
 
 
