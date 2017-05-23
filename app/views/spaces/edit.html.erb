@@ -1,8 +1,8 @@
-<h1>Edit Space</h1>
+<h1 class="text-center">Edit Space</h1>
 
 <%= render 'form', space: @space %>
 
-<%= link_to 'Show', space_path(@space) %> |
-<%= link_to 'Back', spaces_path %>
-
-
+<div class="text-center padded">
+  <%= link_to 'Back', spaces_path, class: "btn btn-primary" %>
+  <%= link_to 'Show', space_path(@space), class: "btn btn-primary" %>
+</div>

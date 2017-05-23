@@ -1,5 +1,19 @@
+<div class="container padded">
+  <div class="show-space">
+    <h2> <%= @space.name %> </h2>
+    <p> <%= @space.description %> </p>
+    <br>
+    <p> Address: <%= @space.address%></p>
+  </div>
 
-<p> <%= @space.name%> is on Demand</p>
+  <div class="gallery padded">
+    <h3>Gallery</h3>
+    <%= cl_image_tag @space.photo, height: 300, width: 400, crop: :fill %>
+  </div>
 
-<%= link_to 'Edit', edit_space_path(@space) %> |
-<%= link_to 'Back', spaces_path %> |
+  <div class="options center">
+    <%= link_to 'Edit', edit_space_path(@space), class:"btn btn-primary" %>
+    <%= link_to 'Back', spaces_path, class:"btn btn-primary" %> 
+    <%= link_to 'Delete', spaces_path(@space), class:"btn btn-primary" %> 
+  </div>
+</div>

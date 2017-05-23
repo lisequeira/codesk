@@ -1,24 +1,7 @@
-<!-- Page Content -->
-<div class="container margin_top">
+<div class="container padded">
+  <%= render 'layouts/cards' %>
 
-    <!-- Cards -->
-    <div class="container">
-        <h2 class="text-center">New spaces</h2>
-        
-        <div class="row">
-            <%= @spaces.each do |s| %>
-          <div class="col-xs-12 col-sm-4">
-            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/card-background.jpeg');">
-                <div class="card-category"> <%= s.city %></div>
-                <div class="card-description">
-                <h3><%= link_to s.name, space_path(s) %></h3>
-                <% end %>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Newsletter -->
+        <!-- Newsletter -->
     <div class="container">
         <div class="newsletter-subscribe">
 
@@ -39,5 +22,4 @@
 
         </div>
     </div>
-
-</div>
+</div> 
