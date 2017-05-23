@@ -1,0 +1,18 @@
+<div class="container">
+    <h2 class="text-center padded">Spaces</h2>
+    
+    <%= @spaces.each do |s| %>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <h3><%= link_to s.name, space_path(s) %></h3> 
+            <%= cl_image_tag s.photo, height: 300, width: 400, crop: :fill %>
+        </div> 
+
+      </div>
+    </div>
+    
+    <% end %>
+
+</div>

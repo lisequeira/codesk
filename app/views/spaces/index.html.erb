@@ -2,7 +2,6 @@
 
 <div class="container">
 
-  <hr>
   <% @spaces.each do |c| %>
 
     <div class="row">
@@ -12,16 +11,12 @@
         <% end %>
         <%= link_to c.name + ' | ' + c.type_space, space_path(c) %>
 
-        <hr>
       </div>
+    </div>
 
   <% end %>
 
-  <hr>
-
-<%= link_to 'New Space',  new_space_path %> |
+  <div class="centered padded"></div>
+    <%= link_to 'New Space',  new_space_path, class: "btn btn-primary" %>
+  </div>
 </div>
-
-
-
-

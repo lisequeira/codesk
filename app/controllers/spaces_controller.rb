@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
 
-  before_action :set_space, except: [:new, :create, :index]
+  before_action :set_space, except: [ :new, :create, :index]
 
   def index
     @spaces = Space.all
@@ -13,8 +13,6 @@ class SpacesController < ApplicationController
     else
       render 'new'
     end
-
-
   end
 
   def new
@@ -22,11 +20,11 @@ class SpacesController < ApplicationController
   end
 
   def update
-
+    @space.update(space_params)
+    redirect_to space_path(@space)
   end
 
   def show
-
   end
 
   def edit
@@ -34,6 +32,7 @@ class SpacesController < ApplicationController
 
   def destroy
     @space.destroy
+    redirect_to spaces_path
   end
 
 
@@ -44,8 +43,5 @@ class SpacesController < ApplicationController
 
   def set_space
     @space = Space.find(params[:id])
-  end
-
-  def spaces_types
   end
 end
