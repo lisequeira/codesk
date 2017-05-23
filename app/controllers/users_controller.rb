@@ -1,6 +1,12 @@
-class UsersController < ApplicationController
+# class UsersController < ApplicationController
 
-  def index
 
-  end
-end
+
+
+# I don't think we need a Users controller.
+# Devise takes care of everything
+
+
+
+
+# end
