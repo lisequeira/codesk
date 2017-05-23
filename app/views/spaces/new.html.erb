@@ -1,0 +1,27 @@
+
+<h1 class="text-center">New Space</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <%= simple_form_for @space do |f| %>
+
+
+        <div class="inputs">
+          <%= f.input :name, required: true %>
+          <%= f.input :address, required: true %>
+          <%= f.input :city, required: true %>
+          <%= f.input :country, required: true %>
+          <%= f.input :description, required: true %>
+          <%= f.collection_select :type_space, Space::TYPE_SPACE, :to_s, :to_s, include_blank: true, required: true%>
+          <%= f.hidden_field :user_id, :value => current_user.id%>
+          <%= f.input :photo, as: :attachinary %>
+          <%= f.submit "Create Space", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <form action="/spaces" method="post"></form>
+
+     <%= link_to 'Back',  :back %>
+    </div>
+  </div>
+</div>

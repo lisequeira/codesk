@@ -1,0 +1,26 @@
+<h1 class="text-center">Spaces</h1>
+
+<div class="container">
+
+  <hr>
+  <% @spaces.each do |c| %>
+
+    <div class="row">
+      <div class= "col-xs-12">
+<!--         <% if c.photo? %>
+          <%= cl_image_tag c.photo.path, width: 100, crop: :scale %>
+        <% end %> -->
+        <%= link_to c.name, cocktail_path(c) %>
+        <hr>
+      </div>
+
+  <% end %>
+
+  <hr>
+
+<%= link_to 'New Space',  new_space_path %> |
+</div>
+
+
+
+
