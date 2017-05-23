@@ -1,3 +1,4 @@
+//= require bootstrap
 //= require jquery-ui
 //= require jquery
 //= require jquery_ujs
