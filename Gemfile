@@ -10,6 +10,7 @@ gem 'devise'
 gem 'redis'
 gem 'omniauth-facebook'
 
+gem "jquery-ui-rails"
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
@@ -24,6 +25,8 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'country_select'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 group :development, :test do
   gem 'binding_of_caller'
