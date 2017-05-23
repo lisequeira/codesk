@@ -1,9 +1,9 @@
 class SpacesController < ApplicationController
 
-  before_action :set_space, except: [:new, :create]
+  before_action :set_space, except: [:new, :create, :index]
 
   def index
-    @spaces = Spaces.all
+    @spaces = Space.all
   end
 
   def create
@@ -39,7 +39,7 @@ class SpacesController < ApplicationController
 
   private
   def space_params
-    params.require(:space).permit(:address, :name, :photo, :type_space, :description, :country, :city, :rate_id, :user_id)
+    params.require(:space).permit(:address, :name, :photo, :type_space, :description, :country, :city, :user_id, rate_attributes:[:id, :hourly, :daily, :weekly, :monthly])
   end
 
   def set_space

@@ -14,6 +14,12 @@
           <%= f.input :country, required: true %>
           <%= f.input :description, required: true %>
           <%= f.collection_select :type_space, Space::TYPE_SPACE, :to_s, :to_s, include_blank: true, required: true%>
+          <%= f.simple_fields_for :rate, @space.build_rate do |q|%>
+            <%= q.input :hourly, label: "Hourly rate ", required: true %>
+            <%= q.input :daily, label: "Daily rate ", required: true %>
+            <%= q.input :weekly, label: "Weekly rate ", required: true %>
+            <%= q.input :monthly, label: "Monthly rate ", required: true %>
+          <%end%>
           <%= f.hidden_field :user_id, :value => current_user.id%>
           <%= f.input :photo, as: :attachinary %>
           <%= f.submit "Create Space", class: "btn btn-primary" %>
