@@ -1,91 +1,43 @@
 <!-- Page Content -->
-    <div class="container margin_top">
+<div class="container margin_top">
 
-        <!-- Jumbotron Header -->
-        <header class="jumbotron hero-spacer">
-            <h1>CoDesk</h1>
-            <p>Find Your Space</p>
-            <p><a href="#" class="btn btn-primary btn-large">See Our Products!</a>
-            </p>
-        </header>
-
-        <hr>
-
-        <!-- Title -->
+    <!-- Cards -->
+    <div class="container">
+        <h2 class="text-center">New spaces</h2>
+        
         <div class="row">
-            <div class="col-lg-12">
-                <h3>Our Spaces</h3>
+            <%= @spaces.each do |s| %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/card-background.jpeg');">
+                <div class="card-category"> <%= s.city %></div>
+                <div class="card-description">
+                <h3><%= link_to s.name, space_path(s) %></h3>
+                <% end %>
             </div>
         </div>
-
-
-        <!-- Page Features -->
-        <div class="row text-center">
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Item</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Item</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://www.tomiscolourpavilion.com/wp-content/uploads/2014/08/honey.jpg" alt="">
-                    <div class="caption">
-                        <h3>Honey</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Item</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright © CoDesk</p>
-                </div>
-            </div>
-        </footer>
-
     </div>
+
+
+    <!-- Newsletter -->
+    <div class="container">
+        <div class="newsletter-subscribe">
+
+            <div class="intro">
+                <h2 class="text-center">Find new places </h2>
+                <p class="text-center">Get weekly briefings with the latest spaces every week. </p>
+            </div>
+
+            <form class="form-inline" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Your Email" />
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-warning" type="submit">Subscribe </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
