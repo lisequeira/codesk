@@ -13,7 +13,7 @@
 
   <div class="options center">
     <%= link_to 'Edit', edit_space_path(@space), class:"btn btn-primary" %>
-    <%= link_to 'Back', spaces_path, class:"btn btn-primary" %> 
-    <%= link_to 'Delete', spaces_path(@space), class:"btn btn-primary" %> 
+    <%= link_to 'Back', spaces_path, class:"btn btn-primary" %>
+    <%= link_to 'Delete', space_path(@space), method: :delete, class:"btn btn-primary" %>
   </div>
 </div>
