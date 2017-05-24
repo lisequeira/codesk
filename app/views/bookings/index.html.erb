@@ -1,0 +1,24 @@
+<h1 class="text-center">Bookings</h1>
+
+<div class="container">
+
+  <hr>
+  <% @bookings.each do |c| %>
+
+    <div class="row">
+      <div class= "col-xs-12">
+        <%= c.start_date %> |
+        <%= c.end_date %>
+        <hr>
+      </div>
+
+  <% end %>
+
+  <hr>
+
+
+</div>
+
+
+
+
