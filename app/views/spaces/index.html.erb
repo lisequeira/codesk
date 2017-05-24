@@ -1,22 +1,6 @@
 <h1 class="text-center">Spaces</h1>
+<%= render @spaces %>
 
-<div class="container">
-
-  <% @spaces.each do |c| %>
-
-    <div class="row">
-      <div class= "col-xs-12">
-        <% if c.photo? %>
-          <%= cl_image_tag c.photo.path, width: 100, crop: :scale %>
-        <% end %>
-        <%= link_to c.name + ' | ' + c.type_space, space_path(c) %>
-
-      </div>
-    </div>
-
-  <% end %>
-
-  <div class="centered padded"></div>
-    <%= link_to 'New Space',  new_space_path, class: "btn btn-primary" %>
-  </div>
+<div class="centered padded">
+  <%= link_to 'New Space',  new_space_path, class: "btn btn-primary" %>
 </div>
