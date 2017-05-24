@@ -1,9 +1,8 @@
-<div class="card col-xs-12 col-sm-4 padded">
+<div class="card col-xs-12 col-sm-3 padded">
   <h3><%= link_to space.name, space_path(space) %></h3> 
 
-    <img class="img-responsive">
-      <% unless space.photo.nil? %>
-        <%= cl_image_tag space.photo.path, height: 200, width: 300, crop: :fill %>
-      <% end %>
-
+  <img class="img-responsive">
+    <% unless space.photo.nil? %>
+      <%= cl_image_tag space.photo.path, height: 200, width: 300, crop: :fill %>
+    <% end %>
 </div>

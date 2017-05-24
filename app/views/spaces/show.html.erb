@@ -1,9 +1,10 @@
 <div class="container padded">
   <div class="show-space">
-    <h2> <%= @space.name %> </h2>
-    <p> <%= @space.description %> </p>
+    <h1> <%= @space.name %> </h1>
+    <h2> <%= @space.description %> </h2>
     <br>
-    <p> Address: <%= @space.address%></p>
+    <p> <%= @space.address%>, <%= @space.city%>, <%= @space.country%></p>
+    <p>
   </div>
 
   <% if @space.photo? %>
@@ -12,7 +13,6 @@
       <%= cl_image_tag @space.photo.path, height: 300, width: 400, crop: :fill %>
     </div>
   <% end %>
-
   <div class="options center">
     <% if @space.user_id == current_user.id %>
 
