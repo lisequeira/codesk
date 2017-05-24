@@ -15,10 +15,17 @@
 
   <div class="options center">
     <% if @space.user_id == current_user.id %>
+
+
       <%= link_to 'Edit', edit_space_path(@space), class:"btn btn-primary" %>
       <%= link_to 'Delete', space_path(@space), method: :delete, class:"btn btn-primary" %>
       <% end %>
       <%= link_to 'Back', spaces_path, class:"btn btn-primary" %>
+
+      <div class="centered padded">
+      <%= link_to 'Add availability',  new_space_listing_path(@space), class: "btn btn-warning" %>
+      </div>
+
     </div>
 
 </div>
