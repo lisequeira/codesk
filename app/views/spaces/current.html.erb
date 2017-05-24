@@ -1,0 +1,11 @@
+<h1 class="text-center">My Spaces</h1>
+
+<% @spaces.each do |i| %>
+  <% if i.user_id == current_user.id %>
+    <%= render i %>
+  <% end %>
+<% end %>
+
+<div class="centered padded">
+  <%= link_to 'New Space',  new_space_path, class: "btn btn-primary" %>
+</div>
