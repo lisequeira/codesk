@@ -1,8 +1,12 @@
 class SpacesController < ApplicationController
 
-  before_action :set_space, except: [ :new, :create, :index]
+  before_action :set_space, except: [ :new, :create, :index, :current]
 
   def index
+    @spaces = Space.all
+  end
+
+  def current
     @spaces = Space.all
   end
 
