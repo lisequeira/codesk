@@ -22,7 +22,8 @@
         </div>
     </div>
     <input type="hidden" name="listing[space_id]" value= <%=@space.id%> >
-    <input type="submit" value="Submit" class="btn btn-primary">
+    <input type="submit" value="Submit" class="btn btn-warning">
+    <%= link_to 'Back', spaces_path, class:"btn btn-primary" %>
   </form>
 </div>
 
