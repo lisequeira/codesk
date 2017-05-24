@@ -1,11 +1,12 @@
 
 <div class="container margin_top">
   <h2>Add new listing</h2>
+  <form action="/spaces/<%=current_user.id%>/listing" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class='col-md-5'>
-
         <div class="form-group">
             <div class='input-group date' id='datetimepicker6'>
-              <input type='text' class="form-control" name="start_date"/>
+              <input type='text' class="form-control" name="listing[start_date]"/>
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
               </span>
@@ -15,23 +16,28 @@
     <div class='col-md-5'>
         <div class="form-group">
             <div class='input-group date' id='datetimepicker7'>
-                <input type='text' class="form-control" name="end_date"/>
+                <input type='text' class="form-control" name="listing[end_date]"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
         </div>
     </div>
-    <input type="submit" value="Submit" class="btn btn-primary" action=" /spaces/" + @space.id +"/listing" method="post">
+    <input type="hidden" name="listing[space_id]" value= <%=@space.id%> >
+    <input type="submit" value="Submit" class="btn btn-primary">
+  </form>
 </div>
 
 
 <script>
     $(document).ready(function () {
-      $('#datetimepicker6').datetimepicker();
-      $('#datetimepicker7').datetimepicker({
-        useCurrent: false //Important! See issue #1075
+      $('#datetimepicker6').datetimepicker({
+        format: 'DD/MM/YYYY HH:00'
       });
+      $('#datetimepicker7').datetimepicker({
+        useCurrent: false,
+        format: 'DD/MM/YYYY HH:00'
+              });
       $("#datetimepicker6").on("dp.change", function (e) {
         $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
       });
