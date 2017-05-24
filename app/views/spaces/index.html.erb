@@ -1,6 +1,8 @@
-<h1 class="text-center">Spaces</h1>
-<%= render @spaces %>
+<div class="card-container padded text-center">
+  <h1>New Spaces</h1>
+  <%= render @spaces %>
+</div>
 
-<div class="centered padded">
-  <%= link_to 'New Space',  new_space_path, class: "btn btn-primary" %>
+<div class="container padded">
+  <%= link_to 'Add Space',  new_space_path, class: "btn btn-primary" %>
 </div>
