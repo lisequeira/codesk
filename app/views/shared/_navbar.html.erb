@@ -38,7 +38,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "spaces/current" do %>
+              <%= link_to spaces_current_path do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "My spaces") %>
               <% end %>
             </li>
@@ -63,11 +63,7 @@
 
     <!-- Button (call-to-action) -->
     <%= link_to t(".top_call_to_action", default: "Add a Space"), "/spaces/new", class: "navbar-wagon-item navbar-wagon-button btn" %>
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Book a Space"), "/spaces/new", class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
-
-
 
 
   <!-- Dropdown list appearing on mobile only -->
