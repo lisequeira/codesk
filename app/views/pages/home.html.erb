@@ -1,26 +1,22 @@
-<div class="container padded">
+<div class="card-container padded text-center">
+  <h1>Spaces that are trending</h1>
   <%= render @spaces %>
 </div>
 
         <!-- Newsletter -->
-    <div class="container">
-        <div class="newsletter-subscribe">
-
-            <div class="intro">
-                <h2 class="text-center">Find new places </h2>
-                <p class="text-center">Get weekly briefings with the latest spaces every week. </p>
-            </div>
-
-            <form class="form-inline" method="post">
-                <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="Your Email" />
-                </div>
-
-                <div class="form-group">
-                    <button class="btn btn-warning" type="submit">Subscribe </button>
-                </div>
-            </form>
-
-        </div>
+<div class="newsletter-container">      
+    <div class="intro">
+        <h1 class="text-center">Find new places </h1>
+        <p class="text-center">Get weekly briefings with the latest spaces every week. </p>
     </div>
+
+    <form class="form-inline text-center" method="post">
+        <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="Your Email">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Subscribe </button>
+        </div>
+    </form>
 </div> 

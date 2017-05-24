@@ -3,7 +3,7 @@
 
     <img class="img-responsive">
       <% unless space.photo.nil? %>
-        <%= cl_image_tag space.photo.path, width: 100, crop: :scale %>
+        <%= cl_image_tag space.photo.path, height: 200, width: 300, crop: :fill %>
       <% end %>
 
 </div>
