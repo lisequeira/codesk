@@ -6,10 +6,12 @@
     <p> Address: <%= @space.address%></p>
   </div>
 
-  <div class="gallery padded">
-    <h3>Gallery</h3>
-    <%= cl_image_tag @space.photo.path, height: 300, width: 400, crop: :fill %>
-  </div>
+  <% if @space.photo? %>
+    <div class="gallery padded">
+      <h3>Gallery</h3>
+      <%= cl_image_tag @space.photo.path, height: 300, width: 400, crop: :fill %>
+    </div>
+  <% end %>
 
   <div class="options center">
     <% if @space.user_id == current_user.id %>
