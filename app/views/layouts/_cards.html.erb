@@ -1,18 +1,21 @@
-<div class="container">
-    <h2 class="text-center padded">Spaces</h2>
+<div class="wrapper-grey">
+  <div class="container padded">
+    <h2 class="text-center">Spaces</h2>
     
-    <%= @spaces.each do |s| %>
-
     <div class="row">
       <div class="col-xs-12 col-sm-4">
-        <div class="card">
+
+        <% @space.each do |photo| %>
+          <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+        
           <h3><%= link_to s.name, space_path(s) %></h3> 
-            <%= cl_image_tag s.photo, height: 300, width: 400, crop: :fill %>
-        </div> 
+          <div class="card-city"><%= s.city %></div> 
+    
+        <% end %>
 
       </div>
     </div>
-    
-    <% end %>
-
+  </div>
 </div>
+
+<!-- <div class="card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path s.photo.path, width: 400, crop: :fill %>')"> -->
