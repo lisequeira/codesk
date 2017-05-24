@@ -2,9 +2,9 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url('https://fonts.googleapis.com/css?family=Lato:400,900|Open+Sans:400,600');
-$base-font: "Open Sans", "Arial", "sans-serif";
-$header-font: "Lato", "Helvetica", "sans-serif";
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab:400,600|Montserrat:700|Open+Sans+Condensed:700');
+$base-font: "Open sans", "Arial", "sans-serif";
+$header-font: "Josefin Slab", "Helvetica", "sans-serif";
 
 // Local fonts (uncomment following lines)
 // @font-face {
@@ -18,7 +18,7 @@ $header-font: "Lato", "Helvetica", "sans-serif";
 
 // Font-size and line-height
 $base-size: 16px;
-$base-height: 1.4;
+$base-height: 1.2;
 
 /* -------------------------------------
  * Colors
