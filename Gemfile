@@ -28,6 +28,12 @@ gem 'coffee-rails'
 gem 'country_select'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   gem 'binding_of_caller'
