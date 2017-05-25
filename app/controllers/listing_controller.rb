@@ -16,7 +16,7 @@ class ListingController < ApplicationController
       end
     end
     @unavailable_dates.flatten!
-    p @unavailable_dates
+
   end
 
   def create

@@ -7,10 +7,37 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+
+    @unavailable_dates = @space.bookings.map do |b|
+      if b.start_date.nil? || b.end_date.nil?
+        []
+      else
+        (b.start_date.to_date..b.end_date.to_date).map(&:to_s)
+      end
+    end
+    @unavailable_dates.flatten!
+
+    @listing_dates = @space.listings.map do |b|
+      if b.start_date.nil? || b.end_date.nil?
+        {}
+      else
+        {from: b.start_date.to_date, to: b.end_date.to_date}
+      end
+    end
+
   end
 
   def create
+    range = params[:daterange].split(" - ")
+    start_date = range[0]
+    end_date = range[1]
+
     @booking = Booking.new(booking_params)
+    @booking = Booking.new(booking_params)
+    @booking.start_date = start_date
+    @booking.end_date = end_date
+
+
     if @booking.save
       redirect_to space_booking_path(@space, @booking)
     else
@@ -25,7 +52,7 @@ class BookingsController < ApplicationController
 
   private
   def booking_params
-    params.require(:booking).permit(:id, :start_date, :end_date, :space_id, :user_id)
+    params.require(:booking).permit(:id, :space_id, :user_id)
   end
 
   def set_space
