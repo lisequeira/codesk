@@ -101,11 +101,13 @@ console.log(styles);
 
 <div class="wrapper">
 
-  <div class="container padded">
+<div class="container-fluid text-center padded">
+  <div class="row">
     <%= render @spaces %>
   </div>
+</div>
 
-  <div class="container padded">
+  <div class="container text-center padded">
     <%= link_to 'Add Space',  new_space_path, class: "btn btn-primary" %>
   </div>
 

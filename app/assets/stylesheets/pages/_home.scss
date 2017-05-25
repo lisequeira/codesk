@@ -2,15 +2,11 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-.wrapper{
-    display:block;
+.wrapper {
     padding: 50px;
+    margin: 0 auto;
 }
-.container{
-    flex: wrap;
-    justify-content: center;
-    padding: 30px;
-}
+
 @media only screen and (max-width:768px){
     .container{
         width:100%;
