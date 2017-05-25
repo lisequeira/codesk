@@ -7,6 +7,15 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+
+    @unavailable_datetime = @space.bookings.map do |l|
+      if l.start_date.nil? || l.end_date.nil?
+        []
+      else
+        (l.start_date.to_date..l.end_date.to_date).map(&:to_s)
+      end
+    end
+    @unavailable_datetime.flatten!
   end
 
   def create
