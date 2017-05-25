@@ -3,7 +3,6 @@
 
   <img class="img-responsive">
     <% unless space.photo.nil? %>
-      <%= cl_image_tag space.photo.path, :width => :auto, 
-  :responsive_placeholder => "blank", crop: :fill %>
+      <%= cl_image_tag space.photo.path, height: 300, width: 400, crop: :fill %>
     <% end %>
 </div>
