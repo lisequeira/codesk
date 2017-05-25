@@ -4,7 +4,7 @@ module ApplicationHelper
 
   def avatar_url(user)
     if user.photo.present?
-      avatar_url = user.photo_url
+      avatar_url = user.photo.path
     elsif gravatar?(user)
       gravatar = Digest::MD5::hexdigest(user.email).downcase
       avatar_url = "http://gravatar.com/avatar/#{gravatar}.png"
