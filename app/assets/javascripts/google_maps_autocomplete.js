@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  var space_address = $('#space_address').get(0);
+  var address = $('.address').get(0);
 
-  if (space_address) {
-    var autocomplete = new google.maps.places.Autocomplete(space_address, { types: ['geocode'] });
+  if (address) {
+    var autocomplete = new google.maps.places.Autocomplete(address, { types: ['geocode'] });
     google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-    google.maps.event.addDomListener(space_address, 'keydown', function(e) {
+    google.maps.event.addDomListener(address, 'keydown', function(e) {
       if (e.keyCode == 13) {
         e.preventDefault(); // Do not submit the form on Enter.
       }
@@ -16,11 +16,10 @@ function onPlaceChanged() {
   var place = this.getPlace();
   var components = getAddressComponents(place);
 
-  $('#space_address').trigger('blur').val(components.address);
-  $('#space_zip_code').val(components.zip_code);
-  $('#space_city').val(components.city);
+  $('.address').val(components.address);
+  $('.address-city').val(components.city);
   if (components.country_code) {
-    $('#space_country').val(components.country_code);
+    $('.address-country').val(components.country_code);
   }
 }
 
