@@ -10,6 +10,13 @@ class SpacesController < ApplicationController
       marker.lng space.longitude
       # inserir a fotografia aqui
       # marker.photo space.photo
+
+      if params[:search]
+        @spaces = Space.search(params[:search]).order("created_at DESC")
+      else
+        @spaces = Space.all.order('created_at DESC')
+      end
+
     end
 
   end

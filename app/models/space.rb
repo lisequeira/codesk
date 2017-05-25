@@ -11,4 +11,8 @@ class Space < ApplicationRecord
   has_attachment :photo
   accepts_nested_attributes_for :rate
 
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%") 
+  end
+
 end
