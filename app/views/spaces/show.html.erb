@@ -1,3 +1,8 @@
+<%= content_for(:title) do %>
+  <%= @space.name%>
+<% end %>
+
+
 <div class="container padded">
   <div class="show-space">
     <h1> <%= @space.name %> </h1>
@@ -33,3 +38,9 @@
     </div>
 
 </div>
+
+<script>
+$(document).ready(function(){
+  alert('Welcome to <%= j @space.name %>');
+});
+</script>
