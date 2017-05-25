@@ -23,6 +23,8 @@ gem "simple_calendar", "~> 2.0"
 
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'country_select'
