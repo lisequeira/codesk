@@ -3,45 +3,37 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class='col-md-5'>
         <div class="form-group">
-            <div class='input-group date' id='datetimepicker6'>
-              <input type='text' class="form-control" name="listing[start_date]"/>
-              <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-              </span>
-            </div>
+            <input type="text" name="daterange" value="">
         </div>
     </div>
-    <div class='col-md-5'>
-        <div class="form-group">
-            <div class='input-group date' id='datetimepicker7'>
-                <input type='text' class="form-control" name="listing[end_date]"/>
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-        </div>
-    </div>
+
     <input type="hidden" name="listing[space_id]" value= <%=@space.id%> >
     <input type="submit" value="Submit" class="btn btn-warning">
     <%= link_to 'Back', spaces_path, class:"btn btn-primary" %>
   </form>
 </div>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('input[name="daterange"]').daterangepicker({
+          timePicker: true,
+          timePickerIncrement: 60,
+          timePicker24Hour: true,
+          locale: {
+              format: 'DD/MM/YYYY hh:mm A'
+          },
+          isInvalidDate: function(date){
+            var invalidDates = <%= @unavailable_dates.to_json.html_safe %>;
+            console.log(date);
+            var dateString = date.toISOString().slice(0,10);
+            if (!dateString) return false;
+            console.log(dateString);
+            return invalidDates.indexOf(dateString) > -1;
+          }
+      });
 
-<script>
-    $(document).ready(function () {
-      $('#datetimepicker6').datetimepicker({
-        format: 'DD/MM/YYYY HH:00'
-      });
-      $('#datetimepicker7').datetimepicker({
-        useCurrent: false,
-        format: 'DD/MM/YYYY HH:00'
-              });
-      $("#datetimepicker6").on("dp.change", function (e) {
-        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-      });
-      $("#datetimepicker7").on("dp.change", function (e) {
-        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-      });
-    });
+    $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+    $(this).val(picker.startDate.format('DD/MM/YYYY hh:mm A') + ' - ' + picker.endDate.format('DD/MM/YYYY hh:mm A'));
+  });
+  });
 </script>
