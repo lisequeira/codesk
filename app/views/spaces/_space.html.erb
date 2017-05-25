@@ -1,8 +1,8 @@
 <div class="col-md-4">
-  <h3><%= link_to space.name, space_path(space) %></h3> 
+  <h3><%= link_to space.name, space_path(space), class: "card-name" %></h3> 
 
     <% unless space.photo.nil? %>
-      <%= cl_image_tag space.photo.path, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag space.photo.path, height: 300, width: 400, crop: :fill, class: "img-card" %>
     <% end %>
 </div>
 
