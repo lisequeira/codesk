@@ -8,7 +8,10 @@ class SpacesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
       marker.lat space.latitude
       marker.lng space.longitude
+      # inserir a fotografia aqui
+      # marker.photo space.photo
     end
+
   end
 
   def current
@@ -34,6 +37,7 @@ class SpacesController < ApplicationController
   end
 
   def show
+    @space_coordinates = [{ lat: @space.latitude, lng: @space.longitude }]
   end
 
   def edit

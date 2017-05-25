@@ -20,8 +20,6 @@
   <% end %>
   <div class="options center">
     <% if @space.user_id == current_user.id %>
-
-
       <%= link_to 'Edit', edit_space_path(@space), class:"btn btn-primary" %>
       <%= link_to 'Delete', space_path(@space), method: :delete, class:"btn btn-primary" %>
       <% end %>
@@ -36,11 +34,29 @@
         </div>
       <%end%>
     </div>
-
 </div>
 
-<script>
-$(document).ready(function(){
-  alert('Welcome to <%= j @space.name %>');
-});
-</script>
+
+<div id="map" style="width: 800px; height: 800px"></div>
+
+  <!-- here goes the map -->
+  <% content_for(:after_js) do %>
+  <script type = "text/javascript">
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @space_coordinates.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  </script>
+<% end %>
+
+
+
