@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: [:facebook]
 
+  mount_uploader :photo, PhotoUploader
+  
   #facebook
   # devise
   has_many :bookings
