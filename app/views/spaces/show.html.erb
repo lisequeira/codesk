@@ -1,3 +1,8 @@
+<%= content_for(:title) do %>
+  <%= @space.name%>
+<% end %>
+
+
 <div class="container padded">
   <div class="show-space">
     <h1> <%= @space.name %> </h1>
@@ -15,8 +20,6 @@
   <% end %>
   <div class="options center">
     <% if @space.user_id == current_user.id %>
-
-
       <%= link_to 'Edit', edit_space_path(@space), class:"btn btn-primary" %>
       <%= link_to 'Delete', space_path(@space), method: :delete, class:"btn btn-primary" %>
       <% end %>
@@ -31,5 +34,108 @@
         </div>
       <%end%>
     </div>
-
 </div>
+
+
+<div id="map" style="width: 800px; height: 800px"></div>
+
+  <!-- here goes the map -->
+  <% content_for(:after_js) do %>
+  <script type = "text/javascript">
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+
+      var styles = [
+    {
+        "featureType": "landscape.natural",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#e0efef"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "hue": "#1900ff"
+            },
+            {
+                "color": "#c0e8e8"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": 100
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "lightness": 700
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#7dcdcd"
+            }
+        ]
+    }
+];
+
+console.log(styles);
+
+      handler.buildMap({
+        provider: {
+          styles: styles
+        },
+        internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @space_coordinates.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  </script>
+<% end %>
+
+
+

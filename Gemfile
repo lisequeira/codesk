@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
 gem 'omniauth-facebook'
+gem 'geocoder'
 
 gem "jquery-ui-rails"
 gem 'sass-rails'
@@ -22,11 +23,17 @@ gem "simple_calendar", "~> 2.0"
 
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
+gem 'mini_magick'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'country_select'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   gem 'binding_of_caller'

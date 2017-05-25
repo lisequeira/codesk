@@ -4,6 +4,10 @@ class Space < ApplicationRecord
   belongs_to :rate
   has_many :listings
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   has_attachment :photo
   accepts_nested_attributes_for :rate
+
 end

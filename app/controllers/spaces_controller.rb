@@ -3,7 +3,15 @@ class SpacesController < ApplicationController
   before_action :set_space, except: [ :new, :create, :index, :current]
 
   def index
-    @spaces = Space.all
+    @spaces = Space.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
+      marker.lat space.latitude
+      marker.lng space.longitude
+      # inserir a fotografia aqui
+      # marker.photo space.photo
+    end
+
   end
 
   def current
@@ -29,6 +37,7 @@ class SpacesController < ApplicationController
   end
 
   def show
+    @space_coordinates = [{ lat: @space.latitude, lng: @space.longitude }]
   end
 
   def edit

@@ -1,9 +1,11 @@
 <h1 class="text-center">My Spaces</h1>
 
 <div class="card-container">
-  <% @spaces.each do |i| %>
-    <% if i.user_id == current_user.id %>
-      <%= render i %>
+  <div class="row">
+    <% @spaces.each do |i| %>
+      <% if i.user_id == current_user.id %>
+        <%= render i %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
