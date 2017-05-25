@@ -1,5 +1,5 @@
 
-  <form action="/spaces/<%=current_user.id%>/listing" method="post">
+  <form action="/spaces/<%=@space.id%>/listing" method="post">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class='col-md-5'>
         <div class="form-group">
@@ -22,7 +22,8 @@
         </div>
     </div>
     <input type="hidden" name="listing[space_id]" value= <%=@space.id%> >
-    <input type="submit" value="Submit" class="btn btn-primary">
+    <input type="submit" value="Submit" class="btn btn-warning">
+    <%= link_to 'Back', spaces_path, class:"btn btn-primary" %>
   </form>
 </div>
 

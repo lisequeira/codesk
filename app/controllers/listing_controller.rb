@@ -1,6 +1,8 @@
 class ListingController < ApplicationController
   before_action :set_space, except: [:destroy]
-
+  def index
+    @listings = Listing.all
+  end
 
   def new
     @listing = Listing.new
@@ -9,7 +11,7 @@ class ListingController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     if @listing.save
-      redirect_to space_listing_path(@space, @listing)
+      redirect_to space_listing_index_path(@space)
     else
       render 'new'
     end
