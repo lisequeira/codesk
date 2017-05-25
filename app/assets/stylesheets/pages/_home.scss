@@ -2,17 +2,29 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-.page-wrapper{
-  padding: 100px;
+.wrapper{
+    display:block;
+    padding: 50px;
 }
-
-.card {
-  margin: 30px;
+.container{
+    flex: wrap;
+    justify-content: center;
+    padding: 30px;
+}
+@media only screen and (max-width:768px){
+    .container{
+        width:100%;
+     }
+}
+@media only screen and (min-width:768px){
+    .container{
+        width:50%;
+     }
 }
 
 .newsletter-container {
   background: #D7E1E5;
-  padding: 50px 50px;
+  padding: 50px;
   margin-top: 70px;
 }
 
