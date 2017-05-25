@@ -1,7 +1,7 @@
 <div class="container margin_top">
   <h2>Add new booking</h2>
 
-  <form action="/spaces/<%=@space.id%>/listing" method="post">
+  <form action="/spaces/<%=@space.id%>/bookings" method="post">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class='col-md-5'>
         <div class="form-group">
@@ -24,6 +24,34 @@
           locale: {
               format: 'DD/MM/YYYY hh:mm'
           },
+          isInvalidDate: function(date){
+            var invalidDates = <%= @unavailable_dates.to_json.html_safe %>;
+            console.log(date);
+            var dateString = date.toISOString().slice(0,10);
+            if (!dateString) return false;
+            console.log(dateString);
+            return invalidDates.indexOf(dateString) > -1;
+          },
+          beforeShowDay: function(date){
+            var invalidDates = <%= @@listing_dates.to_json.html_safe %>;
+
+            for(i=0;i<disabledArr.length;i++){
+              var From = disabledArr[i].from.split("/");
+              var To = disabledArr[i].to.split("/");
+              var FromDate = new Date(From[2],From[1]-1,From[0]);
+              var ToDate = new Date(To[2],To[1]-1,To[0]);
+              var found=false;
+              if(date>=FromDate && date<=ToDate){
+                  found=true;
+                  return [false, "red"];
+              }
+          }
+
+        //At the end of the for loop, if the date wasn't found, return true.
+        if(!found){
+            return [true, ""]; // Return true (Not disabled) and no class.
+        }
+    }
 
       });
 
