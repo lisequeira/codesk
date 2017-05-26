@@ -1,4 +1,8 @@
 class Space < ApplicationRecord
+
+  include PgSearch
+  pg_search_scope :search, against: [:name, :address]
+
   TYPE_SPACE = ["Desk", "Office", "Meeting Room", "Events Room"]
   belongs_to :user
   belongs_to :rate

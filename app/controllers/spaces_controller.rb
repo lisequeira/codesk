@@ -3,7 +3,9 @@ class SpacesController < ApplicationController
   before_action :set_space, except: [ :new, :create, :index, :current]
 
   def index
-    @spaces = Space.where.not(latitude: nil, longitude: nil)
+    @spaces = Space.search(params[:search])
+
+    @spaces = @spaces.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
       marker.lat space.latitude
@@ -11,7 +13,6 @@ class SpacesController < ApplicationController
       # inserir a fotografia aqui
       # marker.photo space.photo
     end
-
   end
 
   def current
