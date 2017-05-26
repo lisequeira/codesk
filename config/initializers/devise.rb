@@ -8,6 +8,7 @@ Devise.setup do |config|
     image_size: 'square',  # 50x50, guaranteed ratio
     secure_image_url: true
 
+  config.secret_key = '4d97643eb023df7a98409812248cb856afcc10285e33ee7618b003212f729d0acb6b52e0c79818068e60b0c751eefd897b80052fe0a12d1d9fc2a1e5254461f4'
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
