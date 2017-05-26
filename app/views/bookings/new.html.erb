@@ -16,16 +16,27 @@
 
 
 <script type="text/javascript">
+  var date_today = Date.now();
+
+  function addMonths(date, months) {
+    date.setMonth(date.getMonth() + months);
+    return date;
+  }
+
+  var fromNow = addMonths(new Date(), 6);
+
   $(document).ready(function() {
       $('input[name="daterange"]').daterangepicker({
           timePicker: true,
           timePickerIncrement: 60,
           timePicker24Hour: true,
+          minDate: Date.now(),
+          maxDate: fromNow,
           locale: {
               format: 'DD/MM/YYYY hh:mm'
           },
           isInvalidDate: function(date){
-            var invalidDates = <%= @unavailable_dates.to_json.html_safe %>;
+            var invalidDates = <%= @dates.to_json.html_safe %>;
 
 
             var dateString = date.toISOString().slice(0,10);
