@@ -4,9 +4,9 @@
       <%= simple_form_for @space do |f| %>
         <div class="inputs">
           <%= f.input :name, required: true %>
-          <%= f.input :address, required: true %>
-          <%= f.input :city, required: true %>
-          <%= f.input :country, required: true %>
+          <%= f.input :address, required: true, :input_html => { :class => 'address' } %>
+          <%= f.input :city, required: true, :input_html => { :class => 'address-city' }%>
+          <%= f.input :country, required: true, :input_html => { :class => 'address-country' } %>
           <%= f.input :description, required: true %>
           <%= f.collection_select :type_space, Space::TYPE_SPACE, :to_s, :to_s, include_blank: true, required: true%>
           <%= f.simple_fields_for :rate, @space.build_rate do |q|%>
@@ -25,6 +25,4 @@
   </div>
 </div>
 
-<%= content_for(:after_js) do %>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDANjx3bosEtIyzJaoWs50Wnt6nt_1rmxU"></script>
-<% end %>
+

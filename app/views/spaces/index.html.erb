@@ -1,7 +1,11 @@
 <h1 class="text-center">New Spaces</h1>
 
-<div id="map"></div>
 
+ <%= content_for(:before_js) do %>
+     <%= javascript_include_tag "https://maps.google.com/maps/api/js?key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+  <% end %>
+
+<div id="map"></div>
 <% content_for(:after_js) do %>
   <script type = "text/javascript">
     $(document).ready(function() {
@@ -101,11 +105,13 @@ console.log(styles);
 
 <div class="wrapper">
 
-  <div class="container padded">
+<div class="container-fluid text-center padded">
+  <div class="row">
     <%= render @spaces %>
   </div>
+</div>
 
-  <div class="container padded">
+  <div class="container text-center padded">
     <%= link_to 'Add Space',  new_space_path, class: "btn btn-primary" %>
   </div>
 

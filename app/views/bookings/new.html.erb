@@ -26,13 +26,15 @@
           },
           isInvalidDate: function(date){
             var invalidDates = <%= @unavailable_dates.to_json.html_safe %>;
-            console.log(date);
+
+
             var dateString = date.toISOString().slice(0,10);
             if (!dateString) return false;
-            console.log(dateString);
+
             return invalidDates.indexOf(dateString) > -1;
           }
       });
+
 
     $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
     $(this).val(picker.startDate.format('DD/MM/YYYY hh:mm A') + ' - ' + picker.endDate.format('DD/MM/YYYY hh:mm A'));

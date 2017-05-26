@@ -1,6 +1,8 @@
 class ListingController < ApplicationController
+
   before_action :set_space, except: [:destroy]
   before_action :require_same_user, except: [:index, :show]
+
 
   def index
     @listings = Listing.all
@@ -53,7 +55,9 @@ class ListingController < ApplicationController
 
   def require_same_user
     if current_user != @space.user
+
       flash[:alert] =  "You can only list your own spaces"
+
       redirect_to root_path
     end
   end

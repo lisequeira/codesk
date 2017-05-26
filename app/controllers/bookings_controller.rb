@@ -1,6 +1,11 @@
+require 'date'
+
 class BookingsController < ApplicationController
+
   before_action :set_space, except: [:destroy]
+
   before_action :require_same_user, except: [:index, :show]
+
 
   def index
     @bookings = Booking.all
@@ -8,6 +13,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+
     # @dates = (Date.today..6.months.from_now).map(&:to_s)
     # @listings_slots = @space.listings.map do |l|
     #   if l.start_date.nil? || l.end_date.nil?
@@ -25,6 +31,7 @@ class BookingsController < ApplicationController
     #   end
     # end
     # @unavailable_dates.flatten!
+
   end
 
   def create
@@ -33,8 +40,10 @@ class BookingsController < ApplicationController
     end_date = range[1]
 
     @booking = Booking.new(booking_params)
+
     @booking.start_date = start_date
     @booking.end_date = end_date
+
 
     if @booking.save
       redirect_to space_booking_path(@space, @booking)
@@ -59,7 +68,9 @@ class BookingsController < ApplicationController
 
   def require_same_user
     if current_user == @space.user
+
       flash[:alert] = "You cannot book your own spaces"
+
       redirect_to root_path
     end
   end
