@@ -12,7 +12,7 @@ class Space < ApplicationRecord
   accepts_nested_attributes_for :rate
 
   def self.search(search)
-    where("name LIKE ?", "%#{search}%") 
+    where("name LIKE ?", "%#{search}%")
   end
 
 end

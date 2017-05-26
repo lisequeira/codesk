@@ -8,10 +8,12 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
+    <form class="form-inline">
       <%= form_tag(spaces_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Spaces" %>
-      <%= submit_tag "Search", class: "navbar-wagon-search-btn" %>
+      <p>
+      <%= text_field_tag :search, params[:search], class: "form-control" %>
+      <%= submit_tag "Search", class: "btn btn-default" %>
+      </p>
       <% end %>
     </form>
 

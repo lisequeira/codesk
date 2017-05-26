@@ -3,6 +3,13 @@ class SpacesController < ApplicationController
   before_action :set_space, except: [ :new, :create, :index, :current]
 
   def index
+    @spaces = Space.all
+    if params[:search]
+      @spaces = Space.search(params[:search]).order("created_at DESC")
+    else
+      @spaces = Space.all.order('created_at DESC')
+    end
+
     @spaces = Space.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@spaces) do |space, marker|
@@ -10,15 +17,7 @@ class SpacesController < ApplicationController
       marker.lng space.longitude
       # inserir a fotografia aqui
       # marker.photo space.photo
-
-      if params[:search]
-        @spaces = Space.search(params[:search]).order("created_at DESC")
-      else
-        @spaces = Space.all.order('created_at DESC')
-      end
-
     end
-
   end
 
   def current
@@ -58,7 +57,7 @@ class SpacesController < ApplicationController
 
   private
   def space_params
-    params.require(:space).permit(:address, :name, :photo, :type_space, :description, :country, :city, :user_id, rate_attributes:[:id, :hourly, :daily, :weekly, :monthly])
+    params.require(:space).permit(:search, :address, :name, :photo, :type_space, :description, :country, :city, :user_id, rate_attributes:[:id, :hourly, :daily, :weekly, :monthly])
   end
 
   def set_space
