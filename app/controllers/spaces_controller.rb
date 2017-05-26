@@ -3,7 +3,8 @@ class SpacesController < ApplicationController
   before_action :set_space, except: [ :new, :create, :index, :current]
 
   def index
-    @spaces = Space.search(params[:search])
+    @spaces = Space.all
+    @spaces = Space.search(params[:search]) if params[:search]
 
     @spaces = @spaces.where.not(latitude: nil, longitude: nil)
 
