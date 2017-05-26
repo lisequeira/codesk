@@ -1,5 +1,7 @@
 class ListingController < ApplicationController
   before_action :set_space, except: [:destroy]
+  before_action :require_same_user, except: [:index, :show]
+
   def index
     @listings = Listing.all
   end
@@ -47,5 +49,12 @@ class ListingController < ApplicationController
 
   def set_space
     @space = Space.find(params[:space_id])
+  end
+
+  def require_same_user
+    if current_user != @space.user
+      flash[:danger]= "You can only edit your own profile"
+      redirect_to root_path
+    end
   end
 end
