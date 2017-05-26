@@ -67,7 +67,7 @@
 
 /* Navbar search form */
 .navbar-wagon-search {
-  flex: 0 1 300px;
+  flex: 0 1 auto;
   display: flex;
   justify-content: flex-end;
   padding: 0 10px;
@@ -75,7 +75,7 @@
 }
 .navbar-wagon-search-btn {
   line-height: 40px;
-  color: #E6E6E6;
+  color: $blue;
   border: none;
   background: transparent;
   position: absolute;
@@ -84,13 +84,13 @@
   z-index: 1;
 }
 .navbar-wagon-search-input {
-  flex: 0 1 300px;
+  flex: 0 1 auto;
   transition: all 0.15s ease;
   line-height: 40px;
   font-weight: lighter;
   color: #666666;
   border: 1px solid #E6E6E6;
-  border-radius: 5px;
+  border-radius: 50px;
   padding: 0 10px;
   font-size: 14px;
   outline: none;
