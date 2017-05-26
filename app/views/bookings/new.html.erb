@@ -1,11 +1,11 @@
-<div class="container margin_top">
+<div class="container">
   <h2>Add new booking</h2>
 
   <form action="/spaces/<%=@space.id%>/bookings" method="post">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class='col-md-5'>
         <div class="form-group">
-            <input type="text" name="daterange" value="">
+          <input type="text" name="daterange" value="" class="form-control">
         </div>
     </div>
     <input type="hidden" name="booking[space_id]" value= <%=@space.id%> >
@@ -26,11 +26,15 @@
           },
           isInvalidDate: function(date){
             var invalidDates = <%= @unavailable_dates.to_json.html_safe %>;
+
+
             var dateString = date.toISOString().slice(0,10);
             if (!dateString) return false;
+
             return invalidDates.indexOf(dateString) > -1;
           }
-    });
+      });
+
 
     $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
     $(this).val(picker.startDate.format('DD/MM/YYYY hh:mm A') + ' - ' + picker.endDate.format('DD/MM/YYYY hh:mm A'));

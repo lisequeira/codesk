@@ -20,7 +20,7 @@
           timePickerIncrement: 60,
           timePicker24Hour: true,
           locale: {
-              format: 'DD/MM/YYYY hh:mm A'
+              format: 'DD/MM/YYYY hh:mm'
           },
           isInvalidDate: function(date){
             var invalidDates = <%= @unavailable_dates.to_json.html_safe %>;

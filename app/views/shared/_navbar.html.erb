@@ -4,16 +4,20 @@
     <%= image_tag "logo.png" %>
   <% end %>
 
+      <!-- Search form -->
+    <form class="navbar-form" role="search">
+      <div class="input-group">
+        <%= form_tag(spaces_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], class: "form-control" %>
+        <div class="input-group-btn">
+          <%= submit_tag "Search", class: "btn btn-default" %>
+        <% end %>
+        </div>
+      </div>
+    </form>
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
