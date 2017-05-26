@@ -1,5 +1,7 @@
 class ListingController < ApplicationController
-  before_action :set_space, except: [:destroy]
+  before_action :set_space
+  before_action :require_same_user, except: [:show, :index]
+
   def index
     @listings = Listing.all
   end
@@ -16,7 +18,7 @@ class ListingController < ApplicationController
       end
     end
     @unavailable_dates.flatten!
-    p @unavailable_dates
+
   end
 
   def create
@@ -47,5 +49,12 @@ class ListingController < ApplicationController
 
   def set_space
     @space = Space.find(params[:space_id])
+  end
+
+  def require_same_user
+    if current_user != @space.user
+      flash[:danger]= "That space is not yours!!"
+      redirect_to root_path
+    end
   end
 end

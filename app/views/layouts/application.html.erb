@@ -19,8 +19,6 @@
 
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="https://raw.githubusercontent.com/dangrossman/bootstrap-daterangepicker/master/daterangepicker.js"></script>
-
 
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -31,7 +29,7 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
     <!-- code for geocoder -->
-    <%= javascript_include_tag "https://maps.google.com/maps/api/js?key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+    <%= yield(:before_js) %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
     <%= render 'shared/footer' %>
