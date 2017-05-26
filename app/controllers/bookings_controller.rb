@@ -3,7 +3,9 @@ require 'date'
 class BookingsController < ApplicationController
 
   before_action :set_space, except: [:destroy]
-  before_action :require_same_user, except: [:show, :index]
+
+  before_action :require_same_user, except: [:index, :show]
+
 
   def index
     @bookings = Booking.all
@@ -12,28 +14,23 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
 
-    @unavailable_dates = @space.bookings.map do |b|
-      if b.start_date.nil? || b.end_date.nil?
-        []
-      else
-        (b.start_date.to_date..b.end_date.to_date).map(&:to_s)
-      end
-    end
-    @unavailable_dates.flatten!
+    # @dates = (Date.today..6.months.from_now).map(&:to_s)
+    # @listings_slots = @space.listings.map do |l|
+    #   if l.start_date.nil? || l.end_date.nil?
+    #     []
+    #   else
+    #     (b.start_date.to_date..b.end_date.to_date).map(&:to_s)
+    #   end
+    # end
 
-    @space_listings = [Date.today]
-
-    @space_listings << @space.listings.order('start_date ASC')
-
-
-    (0..@space_listings.lenght).step(2) do |i|
-      if i == 0 &&
-        @unavailable_dates << @space_listings[i]...
-      end
-
-@space_listings.map do |l|
-
-    end
+    # @unavailable_dates = @space.bookings.map do |b|
+    #   if b.start_date.nil? || b.end_date.nil?
+    #     []
+    #   else
+    #     (b.start_date.to_date..b.end_date.to_date).map(&:to_s)
+    #   end
+    # end
+    # @unavailable_dates.flatten!
 
   end
 
@@ -43,7 +40,7 @@ class BookingsController < ApplicationController
     end_date = range[1]
 
     @booking = Booking.new(booking_params)
-    @booking = Booking.new(booking_params)
+
     @booking.start_date = start_date
     @booking.end_date = end_date
 
@@ -71,7 +68,9 @@ class BookingsController < ApplicationController
 
   def require_same_user
     if current_user == @space.user
-      flash[:danger]= "You cannot book your own spaces"
+
+      flash[:alert] = "You cannot book your own spaces"
+
       redirect_to root_path
     end
   end
