@@ -35,7 +35,7 @@ class SpacesController < ApplicationController
 
   def update
     @space.update(space_params)
-    redirect_to( space_path(@space), notice: "Your space was updated")
+    redirect_to( space_path(@space), notice: "Your space has been updated")
   end
 
   def show
@@ -47,7 +47,7 @@ class SpacesController < ApplicationController
 
   def destroy
     @space.destroy
-    redirect_to( spaces_path, notice: "Your space was deleted")
+    redirect_to( spaces_path, notice: "Your space has been deleted")
   end
 
 

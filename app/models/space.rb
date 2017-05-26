@@ -6,8 +6,8 @@ class Space < ApplicationRecord
   TYPE_SPACE = ["Desk", "Office", "Meeting Room", "Events Room"]
   belongs_to :user
   belongs_to :rate
-  has_many :listings
-  has_many :bookings
+  has_many :listings, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
