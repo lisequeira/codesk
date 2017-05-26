@@ -1,5 +1,6 @@
 
 <div class="container">
+<div class="row">
   <h2>Add new booking</h2>
 
   <form action="/spaces/<%=@space.id%>/bookings" method="post">
@@ -13,7 +14,7 @@
     <input type="hidden" name="booking[user_id]" value= <%=current_user.id%> >
     <input type="submit" value="Submit" class="btn btn-primary">
   </form>
-
+  </div>
 </div>
 
 
