@@ -1,4 +1,8 @@
 class Space < ApplicationRecord
+
+  include PgSearch
+  pg_search_scope :search, against: [:name, :address]
+
   TYPE_SPACE = ["Desk", "Office", "Meeting Room", "Events Room"]
   belongs_to :user
   belongs_to :rate
@@ -10,9 +14,5 @@ class Space < ApplicationRecord
 
   has_attachment :photo
   accepts_nested_attributes_for :rate
-
-  def self.search(search)
-    where("name LIKE ?", "%#{search}%")
-  end
 
 end
