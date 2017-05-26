@@ -56,8 +56,10 @@ class BookingsController < ApplicationController
 
 
     if @booking.save
-      redirect_to space_booking_path(@space, @booking)
+      redirect_to( space_path(@space), notice: "You booked successfully")
+
     else
+      flash[:alert] = "UH OH! Something went wrong!"
       render 'new'
     end
   end

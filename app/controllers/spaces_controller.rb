@@ -23,7 +23,7 @@ class SpacesController < ApplicationController
   def create
     @space = Space.new(space_params)
     if @space.save
-      redirect_to spaces_path
+      redirect_to( space_path(@space), notice: "You got yourself a new space! Congratulations!")
     else
       render 'new'
     end
@@ -35,7 +35,7 @@ class SpacesController < ApplicationController
 
   def update
     @space.update(space_params)
-    redirect_to space_path(@space)
+    redirect_to( space_path(@space), notice: "Your space was updated")
   end
 
   def show
@@ -47,7 +47,7 @@ class SpacesController < ApplicationController
 
   def destroy
     @space.destroy
-    redirect_to spaces_path
+    redirect_to( spaces_path, notice: "Your space was deleted")
   end
 
 

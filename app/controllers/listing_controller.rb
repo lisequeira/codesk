@@ -33,8 +33,9 @@ class ListingController < ApplicationController
     @listing.end_date = end_date
 
     if @listing.save
-      redirect_to space_listing_index_path(@space)
+      redirect_to( space_path(@space), notice: "You listed successfully")
     else
+      flash[:alert] =  "UH OH! Something went wrong!"
       render 'new'
     end
   end
