@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_attachment :photo
   #facebook
   # devise
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)

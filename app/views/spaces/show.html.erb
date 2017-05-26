@@ -9,7 +9,9 @@
     <h2> <%= @space.description %> </h2>
     <br>
     <p> <%= @space.address%>, <%= @space.city%>, <%= @space.country%></p>
-    <p>
+    <br>
+    <h3> <%= @space.type_space%></h3>
+    <p>Per Month: <%= @space.rate.monthly%> €</p>
   </div>
 
   <% if @space.photo? %>
