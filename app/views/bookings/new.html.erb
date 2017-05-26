@@ -1,3 +1,4 @@
+
 <div class="container">
   <h2>Add new booking</h2>
 
@@ -12,17 +13,16 @@
     <input type="hidden" name="booking[user_id]" value= <%=current_user.id%> >
     <input type="submit" value="Submit" class="btn btn-primary">
   </form>
+
 </div>
 
 
 <script type="text/javascript">
-  var date_today = Date.now();
-
   function addMonths(date, months) {
     date.setMonth(date.getMonth() + months);
     return date;
   }
-
+  var dateToday = Date.now();
   var fromNow = addMonths(new Date(), 6);
 
   $(document).ready(function() {
@@ -30,7 +30,7 @@
           timePicker: true,
           timePickerIncrement: 60,
           timePicker24Hour: true,
-          minDate: Date.now(),
+          minDate: dateToday,
           maxDate: fromNow,
           locale: {
               format: 'DD/MM/YYYY hh:mm'

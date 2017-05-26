@@ -1,8 +1,10 @@
 
 <div class="container margin_top">
+  <div class="row">
   <h2>Add new listing</h2>
 
   <form action="/spaces/<%=@space.id%>/listing" method="post">
+
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class='col-sm-6'>
         <div class="form-group">
@@ -17,11 +19,21 @@
 </div>
 
 <script type="text/javascript">
+  var dateToday = Date.now();
+
+  function addMonths(date, months) {
+    date.setMonth(date.getMonth() + months);
+    return date;
+  }
+
+  var fromNow = addMonths(new Date(), 6);
   $(document).ready(function() {
       $('input[name="daterange"]').daterangepicker({
           timePicker: true,
           timePickerIncrement: 60,
           timePicker24Hour: true,
+          minDate: 0,
+          maxDate: fromNow,
           locale: {
               format: 'DD/MM/YYYY hh:mm'
           },
@@ -40,3 +52,4 @@
   });
   });
 </script>
+

@@ -10,8 +10,10 @@
     <br>
     <p> <%= @space.address%>, <%= @space.city%>, <%= @space.country%></p>
     <br>
+
     <h4> <%=@space.type_space%></h4>
     <p> Per Month: <%= @space.rate.monthly%></p>
+
   </div>
 
   <% if @space.photo? %>
