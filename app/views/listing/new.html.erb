@@ -2,4 +2,41 @@
 <div class="container margin_top">
   <h2>Add new listing</h2>
 
-  <%= render 'shared/datepicker'%>
+  <form action="/spaces/<%=@space.id%>/listing" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class='col-sm-6'>
+        <div class="form-group">
+            <input type="text" name="daterange" value="" class="form-control">
+        </div>
+    </div>
+
+    <input type="hidden" name="listing[space_id]" value= <%=@space.id%> >
+    <input type="submit" value="Submit" class="btn btn-warning">
+    <%= link_to 'Back', spaces_path, class:"btn btn-primary" %>
+  </form>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('input[name="daterange"]').daterangepicker({
+          timePicker: true,
+          timePickerIncrement: 60,
+          timePicker24Hour: true,
+          locale: {
+              format: 'DD/MM/YYYY hh:mm'
+          },
+          isInvalidDate: function(date){
+            var invalidDates = <%= @unavailable_dates.to_json.html_safe %>;
+            console.log(date);
+            var dateString = date.toISOString().slice(0,10);
+            if (!dateString) return false;
+            console.log(dateString);
+            return invalidDates.indexOf(dateString) > -1;
+          }
+      });
+
+    $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+    $(this).val(picker.startDate.format('DD/MM/YYYY hh:mm A') + ' - ' + picker.endDate.format('DD/MM/YYYY hh:mm A'));
+  });
+  });
+</script>
