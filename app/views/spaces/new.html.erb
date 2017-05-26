@@ -3,7 +3,7 @@
 <%= render 'form' %>
 
 <%= content_for(:after_js) do %>
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=#{ENV['GOOGLE_API_AUTOCOMPLETE_KEY']}" %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_AUTOCOMPLETE_KEY']}" %>
 <% end %>
 
 
