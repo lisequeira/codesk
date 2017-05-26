@@ -53,7 +53,7 @@ class ListingController < ApplicationController
 
   def require_same_user
     if current_user != @space.user
-      flash[:danger]= "You can only edit your own profile"
+      flash[:alert] =  "You can only list your own spaces"
       redirect_to root_path
     end
   end
