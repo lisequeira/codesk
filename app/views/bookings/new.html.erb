@@ -1,19 +1,19 @@
-<div class="container margin_top">
-  <div class="row">
-    <h2>Add new booking</h2>
 
-    <form action="/spaces/<%=@space.id%>/bookings" method="post">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <div class='col-md-8'>
-          <div class="form-group">
-            <input type="text" name="daterange" value="" class='col-md-8'>
-          </div>
-      </div>
-      <input type="hidden" name="booking[space_id]" value= <%=@space.id%> >
-      <input type="hidden" name="booking[user_id]" value= <%=current_user.id%> >
-      <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
-  </div>
+<div class="container">
+  <h2>Add new booking</h2>
+
+  <form action="/spaces/<%=@space.id%>/bookings" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class='col-sm-6'>
+        <div class="form-group">
+          <input type="text" name="daterange" value="" class="form-control">
+        </div>
+    </div>
+    <input type="hidden" name="booking[space_id]" value= <%=@space.id%> >
+    <input type="hidden" name="booking[user_id]" value= <%=current_user.id%> >
+    <input type="submit" value="Submit" class="btn btn-primary">
+  </form>
+
 </div>
 
 

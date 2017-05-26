@@ -4,29 +4,29 @@
   <h2>Add new listing</h2>
 
   <form action="/spaces/<%=@space.id%>/listing" method="post">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <div class='col-md-8'>
-          <div class="form-group">
-              <input type="text" name="daterange" value="" class='col-md-8'>
-          </div>
-      </div>
 
-      <input type="hidden" name="listing[space_id]" value= <%=@space.id%> >
-      <input type="submit" value="Submit" class="btn btn-warning">
-      <%= link_to 'Back', spaces_path, class:"btn btn-primary" %>
-    </form>
-  </div>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class='col-sm-6'>
+        <div class="form-group">
+            <input type="text" name="daterange" value="" class="form-control">
+        </div>
+    </div>
+
+    <input type="hidden" name="listing[space_id]" value= <%=@space.id%> >
+    <input type="submit" value="Submit" class="btn btn-warning">
+    <%= link_to 'Back', spaces_path, class:"btn btn-primary" %>
+  </form>
 </div>
 
 <script type="text/javascript">
+  var dateToday = Date.now();
 
   function addMonths(date, months) {
     date.setMonth(date.getMonth() + months);
     return date;
   }
-  var dateToday = new Date();
-  var fromNow = addMonths(new Date(), 6);
 
+  var fromNow = addMonths(new Date(), 6);
   $(document).ready(function() {
       $('input[name="daterange"]').daterangepicker({
           timePicker: true,
